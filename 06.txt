@@ -1,0 +1,20 @@
+käyttäjä->selain:
+
+note right of käyttäjä
+  käyttäjä kirjottaa tekstikenttään muistiinpanon 
+  ja painaa Talleta-nappia
+end note
+
+note left of selain
+ lomakkeen callback-funktio luo uuden muistiinpanon, tallentaa
+ sen listalle ja lisää päivitetyn lista html:ään 
+end note
+
+selain->käyttäjä: näkymä päivittyy
+
+note right of selain
+  Uusi muistiinpano lähetetään JSON-muodossa palvelimelle
+end note
+
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+palvelin->selain: status 201, JSON viestillä "muistiinpano luotu"

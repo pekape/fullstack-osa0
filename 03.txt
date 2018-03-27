@@ -1,0 +1,48 @@
+käyttäjä->selain:
+
+note right of käyttäjä
+  käyttäjä kirjottaa osoiteriville
+  fullstack-exampleapp.herokuapp.com/notes
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+palvelin->selain: status 200, sivun HTML-koodi
+
+note right of selain
+  HTML:n head-osiossa on link-tagi, joka määrittää selaimen
+  pyytämään main.css tyylitiedostoa palvelimelta
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, main.css tyylitiedosto
+
+note right of selain
+  HTML:n head-osiossa on script-tagi, joka määrittää selaimen
+  pyytämään main.js Javascript-tiedoston palvelimelta
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, main.js Javascript-tiedosto
+
+note right of selain
+  selain suorittaa vastaanottamansa koodin, joka määrittelee
+  tapahtumankäsittelijän ja lähettää pyynnön palvelimen
+  osoitteeseen /data.json
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+
+note left of selain
+ selain näyttää sivun käyttäjälle
+end note
+
+selain->käyttäjä:
+
+palvelin->selain: status 200, JSON-muotoinen data
+
+note left of selain
+ xttp:n takaisinkutsufunktio lisää HTML-dokumenttiin
+ datasta muodostetun listan, näkymä päivittyy
+end note
+
+selain->käyttäjä:
